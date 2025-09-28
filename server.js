@@ -7,11 +7,18 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-io.on("connection", (client) => {
-  client.on("event", (data) => {
-    io.emit("data", data);
+const users = {};
+
+io.on("connection", (socket) => {
+  socket.on("new-user", (user) => {
+    users[socket.id] = user;
+    socket.broadcast.emit("user-joined", user);
   });
-  console.log("A new user has connected", client.id);
+
+  socket.on("send-msg", (data) => {
+    socket.broadcast.emit("message", { message: data, user: users[socket.id] });
+  });
+  console.log("A new user has connected", socket.id);
 });
 
 app.use(express.static(path.resolve("./public")));
