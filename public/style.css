@@ -12,12 +12,12 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #b5d097;
 }
 
 /* Chat container */
 .chat-container {
-  width: 400px;
+  width: 800px;
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -44,32 +44,33 @@ body {
 .chat-box {
   flex: 1;
   overflow-y: auto;
-  padding: 15px;
+  padding: 15px 25px;
   border-bottom: 2px solid #f0f0f0;
-  background-color: #f9f9f9;
+  background-image: url(images.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Individual message styles */
-.message {
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
+
+#sent {
+  align-self: flex-end;
 }
 
-.message.sent {
-  align-items: flex-end;
+#received {
+  align-self: flex-start;
+  background-color: #afb0af;
+  color: white;
 }
 
-.message.received {
-  align-items: flex-start;
-}
-
-.message p {
-  padding: 10px;
-  border-radius: 10px;
+.chat-box p {
   background-color: #4caf50;
   color: white;
+  padding: 10px;
+  border-radius: 10px;
   max-width: 75%;
 }
 
@@ -80,6 +81,7 @@ body {
   border-top: 2px solid #f0f0f0;
   background-color: #fff;
   justify-content: space-between;
+  border-radius: 10px;
 }
 
 #message-input {
